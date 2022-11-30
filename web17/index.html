@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">为什么要用 setTimeout 模拟 setInterval ？</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">为什么要用 setTimeout 模拟 setInterval ？</h1>
+        <div class="stuff">
+            <span>十一月 20, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>在 JS 事件循环之宏任务和微任务中讲到过，setInterval 是一个宏任务。<br>用多了你就会发现它并不是准确无误，极端情况下还会出现一些令人费解的问题。</p>
+<p>下面我们一一罗列..</p>
+<h3 id="推入任务队列后的时间不准确"><a href="#推入任务队列后的时间不准确" class="headerlink" title="推入任务队列后的时间不准确"></a>推入任务队列后的时间不准确</h3><p>定时器代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setInterval(fn(), N);</span><br></pre></td></tr></table></figure>
+<p>上面这句代码的意思其实是 fn()将会在 N 秒之后被推入任务队列。</p>
+<p>所以，在 setInterval 被推入任务队列时，如果在它前面有很多任务或者某个任务等待时间较长比如网络请求等，那么这个定时器的执行时间和我们预定它执行的时间可能并不一致。</p>
+<p>比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> startTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//耗时任务</span></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (i++ &lt; <span class="number">1000000000</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  count++;</span><br><span class="line">  <span class="built_in">console</span>.log(</span><br><span class="line">    <span class="string">"与原设定的间隔时差了："</span>,</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - (startTime + count * <span class="number">1000</span>),</span><br><span class="line">    <span class="string">"毫秒"</span></span><br><span class="line">  );</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：699 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：771 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：887 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：981 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：1142 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：1822 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：1891 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：2001 毫秒</span></span><br><span class="line"><span class="comment">// 与原设定的间隔时差了：2748 毫秒</span></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<h3 id="setInterval-缺点-与-setTimeout-的不同"><a href="#setInterval-缺点-与-setTimeout-的不同" class="headerlink" title="setInterval 缺点 与 setTimeout 的不同"></a>setInterval 缺点 与 setTimeout 的不同</h3><p>再次强调，定时器指定的时间间隔，表示的是何时将定时器的代码添加到消息队列，而不是何时执行代码。所以真正何时执行代码的时间是不能保证的，取决于何时被主线程的事件循环取到，并执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="function"><span class="keyword">function</span>, <span class="title">N</span>)</span></span><br><span class="line"><span class="function">//即：每隔<span class="title">N</span>秒把<span class="title">function</span>事件推到消息队列中</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/20220324233618.png" alt="编码"></p>
+<p>上图可见，setInterval 每隔 100ms 往队列中添加一个事件；100ms 后，添加 T1 定时器代码至队列中，主线程中还有任务在执行，所以等待，some event 执行结束后执行 T1 定时器代码；又过了 100ms ， T2 定时器被添加到队列中，主线程还在执行 T1 代码，所以等待；又过了 100ms ，理论上又要往队列里推一个定时器代码，但由于此时 T2 还在队列中，所以 T3 不会被添加（T3 被跳过），结果就是此时被跳过；这里我们可以看到，T1 定时器执行结束后马上执行了 T2 代码，所以并没有达到定时器的效果。</p>
+<p>综上所述，setInterval 有两个缺点：</p>
+<ul>
+<li>使用 setInterval 时，某些间隔会被跳过；</li>
+<li>可能多个定时器会连续执行；</li>
+</ul>
+<p>可以这么理解：每个 setTimeout 产生的任务会直接 push 到任务队列中；而 setInterval 在每次把任务 push 到任务队列前，都要进行一下判断(看上次的任务是否仍在队列中，如果有则不添加，没有则添加)。</p>
+<p>因而我们一般用 setTimeout 模拟 setInterval ，来规避掉上面的缺点。</p>
+<p>来看一个经典的例子来说明他们的不同：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>做过的朋友都知道：是一次输出了 5 个 5 ; 那么问题来了：是每隔 1 秒输出一个 5 ？还是一秒后立即输出 5 个 5 ？答案是：一秒后立即输出 5 个 5 因为 for 循环了五次，所以 setTimeout 被 5 次添加到时间循环中，等待一秒后全部执行。</p>
+<p>为什么是一秒后输出了 5 个 5 呢？简单来说，因为 for 是主线程代码，先执行完了，才轮到执行 setTimeout 。</p>
+<p>当然为什么输出不是 1 到 5 ，这个涉及到作用域的问题了，这里就不解释了。</p>
+<h3 id="setTimeout-模拟-setInterval"><a href="#setTimeout-模拟-setInterval" class="headerlink" title="setTimeout 模拟 setInterval"></a>setTimeout 模拟 setInterval</h3><p>综上所述，在某些情况下，setInterval 缺点是很明显的，为了解决这些弊端，可以使用 setTimeout() 代替。</p>
+<ul>
+<li>在前一个定时器执行完前，不会向队列插入新的定时器（解决缺点一）</li>
+<li>保证定时器间隔（解决缺点二）</li>
+</ul>
+<p>具体实现如下：</p>
+<p>1.写一个 interval 方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">interval(func, wait)&#123;</span><br><span class="line">    <span class="keyword">let</span> interv = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        func.call(<span class="literal">null</span>);</span><br><span class="line">        timer=setTimeout(interv, wait);</span><br><span class="line">    &#125;;</span><br><span class="line">    timer= setTimeout(interv, wait);</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<p>2.和 setInterval() 一样使用它</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>3.终止定时器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (timer) &#123;</span><br><span class="line">  <span class="built_in">window</span>.clearSetTimeout(timer);</span><br><span class="line">  timer = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#推入任务队列后的时间不准确"><span class="toc-text">推入任务队列后的时间不准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setInterval-缺点-与-setTimeout-的不同"><span class="toc-text">setInterval 缺点 与 setTimeout 的不同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeout-模拟-setInterval"><span class="toc-text">setTimeout 模拟 setInterval</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

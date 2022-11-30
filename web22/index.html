@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">5 个不常提及的 HTML 技巧</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">5 个不常提及的 HTML 技巧</h1>
+        <div class="stuff">
+            <span>十一月 18, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>2021年你需要知道的HTML标签和属性:</p>
+<p>Web开发人员都在广泛的使用HTML。无论你使用什么框架或者选择哪个后端语言，框架在变，但是HTML始终如一。尽管被广泛使用，但还是有一些标签或者属性是大部分开发者不熟知的。虽然现在有很多的模版引擎供我们使用，但是我们还是需要尽可能的熟练掌握HTML内容，就像CSS一样。</p>
+<p>在我看来，最好尽可能使用HTML特性来实现我们的功能，而不是使用JavaScript实现相同的功能，尽管我承认编写HTML可能会是重复的和无聊的。</p>
+<p>尽管许多开发人员每天都在使用HTML，但他们并没有尝试改进自己的项目，也没有真正利用HTML的一些鲜为人知的特性。</p>
+<p>下面这5个通过HTML标签/属性实现的功能我觉得需要了解一下：</p>
+<h4 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h4><p>图片懒加载可以帮助提升网站的性能和响应能力。图片懒加载可以避免立即加载那些不在屏幕中立即显示的图片素材，当用户滚动临近图片时再去开始加载。</p>
+<p>换言之，当用户滚动到图片出现时再进行加载，否则不加载。这就降低了屏幕内容展示过程中的图片素材的请求数量，提升了站点性能。</p>
+<p>往往我们都是通过javascript来实现的，通过监听页面滚动事件来确定加载对应的资源。但是，在不完全考虑兼容性的场景下，我们其实可以直接通过HTML来直接实现。</p>
+<p>注：本篇的提到的标签和属性的兼容性需要大家根据实际场景来选取是否使用</p>
+<p>可以通过为图片文件添加loading=”lazy”的属性来实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">"image.png"</span> loading=<span class="string">"lazy"</span> alt=<span class="string">"lazy"</span> width=<span class="string">"200"</span> height=<span class="string">"200"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="输入提示"><a href="#输入提示" class="headerlink" title="输入提示"></a>输入提示</h4><p>当用户在进行输入搜索功能时，如果能够给出有效的提示，这会大大提升用户体验。输入建议和自动完成功能现在到处可见，我们可以使用Javascript添加输入建议，方法是在输入框上设置事件侦听器，然后将搜索到的关键词与预定义的建议相匹配。</p>
+<p>其实，HTML也是能够让我们来实现预定义输入建议功能的，通过<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;label <span class="keyword">for</span>=<span class="string">"country"</span>&gt;请选择喜欢的国家:&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">&lt;input list="countries" name="country" id="country"&gt;</span></span><br><span class="line"><span class="regexp">&lt;datalist id="countries"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value="UK"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value="Germany"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value="USA"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value="Japan"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value="India"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;option value=“China”&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>datalist&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Picture标签"><a href="#Picture标签" class="headerlink" title="Picture标签"></a>Picture标签</h4><p>你是否遇到过在不同场景或者不同尺寸的设备上面的时候，图片展示适配问题呢？我想大家都遇到过。</p>
+<p>针对只有一个尺寸的图片素材的时候，我们往往可以通过CSS的object-fit属性来进行裁切适配。但是有些时候需要针对不同的分辨率来显示不同尺寸的图片的场景的时候，我们是否可以直接通过HTML来实现呢？</p>
+<p>HTML提供了标签，允许我们来添加多张图片资源，并且根据不同的分辨率需求来展示不同的图片。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;picture&gt;</span><br><span class="line">  &lt;source media=<span class="string">"(min-width:768px)"</span> srcset=<span class="string">"med_flower.jpg"</span>&gt;</span><br><span class="line">  &lt;source media=<span class="string">"(min-width:495px)"</span> srcset=<span class="string">"small_flower.jpg"</span>&gt;</span><br><span class="line">  &lt;img src=<span class="string">"high_flower"</span> style=<span class="string">"width: auto;"</span> /&gt;</span><br><span class="line">&lt;<span class="regexp">/picture&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>我们可以定义不同区间的最小分辨率来确定图片素材，这个标签的使用有些类似</p>
+<h4 id="Base-URL"><a href="#Base-URL" class="headerlink" title="Base URL"></a>Base URL</h4><p>当我们的页面有大量的锚点跳转或者静态资源加载时，并且这些跳转或者资源都在统一的域名的场景时，我们可以通过标签来简化这个处理。</p>
+<p>例如，我们有一个列表需要跳转到微博的不同大V的主页，我们就可以通过设置来简化跳转路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;base href=<span class="string">"https://www.weibo.com/"</span> target=<span class="string">"_blank"</span>&gt;  </span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;a href="jackiechan"&gt;成龙&lt;/</span>a&gt;</span><br><span class="line">  &lt;a href=<span class="string">"kukoujialing"</span>&gt;贾玲&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>标记必须具有href和target属性。</p>
+<h4 id="页面重定向（刷新）"><a href="#页面重定向（刷新）" class="headerlink" title="页面重定向（刷新）"></a>页面重定向（刷新）</h4><p>当我们希望实现一段时间后或者是立即重定向到另一个页面的功能时，我们可以直接通过HTML来实现。</p>
+<p>我们经常会遇到有些站点会有这样一个功能，“5s后页面将跳转”。这个交互可以嵌入到HTML中，直接通过标签，设置http-equiv=”refresh”来实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"4; URL='https://google.com' /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这里content属性指定了重定向发生的秒数。值得一提的是，尽管谷歌声称这种形式的重定向和其他的重定向方式一样可用，但是使用这种类型的重定向其实并不是那么的优雅，往往会显得很突兀。</p>
+<p>因此，最好在某些特殊的情况下使用它，比如在长时间用户不活动之后再重定向到目标页面。</p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>HTML和CSS是非常强大的，哪怕我们仅仅使用这两种技术也能创建出一些奇妙的网站。虽然它们的使用量很大很普遍，还是有很多的开发者并没有真正的深入了解他们，还有很多的内容需要我们深入的去学习和理解，实践，有很多的技巧等待着我们去发现。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#图片懒加载"><span class="toc-text">图片懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入提示"><span class="toc-text">输入提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Picture标签"><span class="toc-text">Picture标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Base-URL"><span class="toc-text">Base URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面重定向（刷新）"><span class="toc-text">页面重定向（刷新）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

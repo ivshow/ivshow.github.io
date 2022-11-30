@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">Vite 的好与坏</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Vite 的好与坏</h1>
+        <div class="stuff">
+            <span>九月 08, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>vite 不仅快，而且挺容易上手的</p>
+<h3 id="一、Vite-是什么"><a href="#一、Vite-是什么" class="headerlink" title="一、Vite 是什么"></a>一、Vite 是什么</h3><p>2020 年 4 月，尤大大发了这么一个推：<br><img src="/img/20220324235025.png" alt="编码"></p>
+<p>随后，2021 年 2 月，Vite 2.0 它来了，上来就是一套组合拳：</p>
+<ul>
+<li>基于 esbuild 实现的极速开发体验</li>
+<li>多框架支持</li>
+<li>兼容 Rollup 的插件机制与 API</li>
+<li>SSR 支持</li>
+<li>旧浏览器支持</li>
+</ul>
+<p>一开始我是拒绝的，从 grunt、gulp ，到 Webpack、Rollup、Snowpack 以及若干知名不知名构建框架，都 2021 了，还来？然后试用了一下，嗯，是真的香！</p>
+<h3 id="二、Vite-的优势"><a href="#二、Vite-的优势" class="headerlink" title="二、Vite 的优势"></a>二、Vite 的优势</h3><h4 id="2-1-真-TM-快"><a href="#2-1-真-TM-快" class="headerlink" title="2.1 真 TM 快"></a>2.1 真 TM 快</h4><p>Vite 非常非常快，对比 Vue-cli(基于 Webpack)：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Dev 启动时长</th>
+<th>Dev 页面加载速度</th>
+<th>Build 时长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vue-cli</td>
+<td>2568ms</td>
+<td>320ms</td>
+<td>5.14s</td>
+</tr>
+<tr>
+<td>Vite</td>
+<td>232ms</td>
+<td>379ms</td>
+<td>2.39s</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：Vue3 项目，10 个组件<br>测试两者的 dev 命令运行耗时相差十倍，且理论上，项目越大性能差距越大，为什么呢？最大的原因是 Vite 在开发模式下并没有做太多打包操作！</p>
+<p>Webpack 启动后会做一堆事情，经历一条很长的编译打包链条，从入口开始需要逐步经历语法解析、依赖收集、代码转译、打包合并、代码优化，最终将高版本的、离散的源码编译打包成低版本、高兼容性的产物代码，这可满满都是 CPU、IO 操作啊，在 Node 运行时下性能必然是有问题。</p>
+<p>而 Vite 运行 Dev 命令后只做了两件事情，一是启动了一个用于承载资源服务的 service；二是使用 esbuild 预构建 npm 依赖包。之后就一直躺着，直到浏览器以 http 方式发来 ESM 规范的模块请求时，Vite 才开始“「按需编译」”被请求的模块。</p>
+<p><img src="/img/20220325000818.png" alt="编码"></p>
+<p>这里 Vite 预设的前提是：</p>
+<p>现代浏览器大多数已经原生支持 ESM 规范，构建工具 —— 特别是开发环境下已经没有太大必要为了低版本兼容把大量的时间花在编译打包上了！<br>这么一对比，Webpack 是啥都做了，浏览器只要运行编译好的低版本(es5)代码就行；而 Vite 只处理问题的一部分，剩下的事情交由浏览器自行处理，那速度必然贼 TM 快。</p>
+<p>除了启动阶段跳过编译操作之外，Vite 还有很多值得一提的性能优化，整体梳理一下：</p>
+<p>预编译：npm 包这类基本不会变化的模块，使用 Esbuild 在 「预构建」 阶段先打包整理好，减少 http 请求数<br>按需编译：用户代码这一类频繁变动的模块，直到被使用时才会执行编译操作<br>客户端强缓存：请求过的模块会被以 http 头 max-age=31536000,immutable 设置为强缓存，如果模块发生变化则用附加的版本 query 使其失效<br>产物优化：相比于 Webpack ，Vite 直接锚定高版本浏览器，不需要在 build 产物中插入过多运行时与模板代码<br>内置更好的分包实现：不需要用户干预，默认启用一系列智能分包规则，尽可能减少模块的重复打包<br>更好的静态资源处理：Vite 尽量避免直接处理静态资源，而是选择遵循 ESM 方式提供服务，例如引入图片 import img from ‘xxx.png’ 语句，执行后 img 变量只是一个路径字符串。</p>
+<p><img src="/img/20220325000936.png" alt="编码"></p>
+<p>可以看出，Vite 的快是全方位的，从 Dev 到 Build，从 npm 包到项目源码，再到静态资源处理都在 ESM 规则框架下尽可能地实现各种优化措施，理论性能急剧提升。</p>
+<h4 id="2-2-简单"><a href="#2-2-简单" class="headerlink" title="2.2 简单"></a>2.2 简单</h4><p>Vite 的用法很简单， 执行初始化命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create @vitejs/app my-vue-app --template vue</span><br></pre></td></tr></table></figure>
+<p>就得到了一个预设好的开发环境，可以开始愉快地写 demo 了，Vite 开箱就给你一堆功能，包括 css 预处理器、html 预处理器、hash 命名、异步加载、分包、压缩、HMR 等：</p>
+<p><img src="/img/20220325001154.png" alt="编码"></p>
+<p>这些功能，作者都按行业最佳实践预设好了，通常不需要用户介入做变更。</p>
+<p>Vite 的表现很容易让人联想到 vue-cli，不过两者区别还是挺大的：vue-cli 底层依赖 Webpack，实际的构建工作通常由各种 Webpack loader、plugin 实现，比如 less =&gt; css 由 less-loader 实现；图片加载由 img-loader 实现等。这套设计很灵活，你可以在 Webpack 体系下做任何你能想到的变更，只需要学习一点点 Webpack 的知识，包括百来个配置项、成千上万的插件、若干虚无缥缈的构建概念等。</p>
+<p>而 Vite 显得特别简洁，它只是暴露了极少数的配置项与 plugin 接口，设计上就没打算让你做太多自定义操作。。。这是因为 Vite 从一开始就没打算做成另一个 Webpack，而是做成一套“能够显著提升前端开发体验的前端构建工具”，重在 「开发体验」 啊同学们，Vite 可谓是用心良苦，想尽办法降低学习入门成本，它就不希望你为了使用工具又学一大堆复杂、缥缈的概念，希望这些事情都在框架层面屏蔽了 —— 虽然代价是丧失灵活性。</p>
+<p>简单说吧，Vite 定位就是傻瓜式但强大的构建工具，你专心写好业务代码，早点下班，不用再为了工具费神费力了。</p>
+<h4 id="2-2-生态"><a href="#2-2-生态" class="headerlink" title="2.2 生态"></a>2.2 生态</h4><p>除了极致的运行性能与简易的使用方法外，Vite 对已有生态的兼容性也不容忽略，主要体现在两个点：</p>
+<p>与 Vue 解耦，兼容支持 React、Svelte、Preact、Vanilla 等，这意味着 Vite 可以被应用在大多数现代技术栈中<br>与 Rollup 极其接近的插件接口，这意味着可以复用 Rollup 生态中大部分已经被反复锤炼的工具<br>说真的，这两条摆上桌面，加上前面讨论的性能优势和超低学习成本，一时半会真想不到拒绝的理由了。。。</p>
+<h3 id="三、Vite-的劣势"><a href="#三、Vite-的劣势" class="headerlink" title="三、Vite 的劣势"></a>三、Vite 的劣势</h3><p>Vite 还很新，虽然它从理论与体感上提供了非常极致的开发体验，还是有一些值得关注的问题。</p>
+<h4 id="3-1-兼容性"><a href="#3-1-兼容性" class="headerlink" title="3.1 兼容性"></a>3.1 兼容性</h4><p>默认情况下，无论是 dev 还是 build 都会直接打出 ESM 版本的代码包，这就要求客户浏览器需要有一个比较新的版本，这放在现在的国情下还是有点难度的。</p>
+<p>不过 Vite 同时提供了一些弥补的方法，使用 build.polyfillDynamicImport 配置项配合 @vitejs/plugin-legacy 打包出一个看起来兼容性比较好的版本，我相信这一点会随时间慢慢被抹平。</p>
+<h4 id="3-2-缺少-Show-Case"><a href="#3-2-缺少-Show-Case" class="headerlink" title="3.2 缺少 Show Case"></a>3.2 缺少 Show Case</h4><p>Vite 太新了，直到最近才释放出正式 2.0 版本，社区还没太反应过来，自然也就没什么大型、复杂的商业落地案例，谁都说不准这里面可能有多少坑。</p>
+<p>不过好消息是社区对 Vite 的搜索热度在最近几个月急剧增长：</p>
+<p><img src="/img/20220325001444.png" alt="编码"></p>
+<p>数据来自谷歌指数 (<a href="https://trends.google.com/trends/explore?date=2021-01-01%202021-07-01&amp;q=vite,webpack" target="_blank" rel="noopener">https://trends.google.com/trends/explore?date=2021-01-01%202021-07-01&amp;q=vite,webpack</a>)<br>相信很快就会出现一大批布道者，毕竟这玩意儿是真的很有竞争力。</p>
+<h4 id="3-3-代价"><a href="#3-3-代价" class="headerlink" title="3.3 代价"></a>3.3 代价</h4><p>不要忘记，工程化本身的复杂度不会凭空消失，只 Vite 背后的团队在帮我们负重前行，这对 Vite 开发团队而言，维护这么多构建规则是一个不小的负担。而站在用户的角度，越容易上手的工具往往意味着越难被定制。</p>
+<p>另外，如果只是在 Vite 预设好的边框里面玩确实很容易，但随着项目复杂度的提高，用户迟早还是会接触到底层的 esbuild 或 Rollup，高工们该补的知识还是迟早还是得补回来，逃不掉的。</p>
+<h3 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h3><p>Vite 给我最大的启示：Webpack 并不是标准答案，前端构建工具可以有一些新的玩法：</p>
+<p>「打包」 不是目的，「运行」 才是，2021 年了，能够交给浏览器做的事情就交给浏览器吧<br>一个灵活的框架，对作者而言可能意味着逐步失控的开发量；对用户而言可能意味高学习成本，以及不断重复的类似空格好还是 tab 好的争论。那么，一套内置好各种业界 「最佳实践」，没有太多定制空间的工具，某些情况下反而能提升大家的效率<br>我个人对 Vite 的态度：短期保持观望，长期非常看好。</p>
+<p>我相信现在开始上手学习 Vite 是一个不错的选择，这东西封装的太好了，学习成本极低(吹逼效果极好)，可以写点 Demo 或者就直接在一些用户范围可控的小型新项目落地。但是，建议不要激进地直接重构一些已有的大型项目，别自己给自己埋坑了，早点下班不香吗。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Vite-是什么"><span class="toc-text">一、Vite 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Vite-的优势"><span class="toc-text">二、Vite 的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-真-TM-快"><span class="toc-text">2.1 真 TM 快</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-简单"><span class="toc-text">2.2 简单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-生态"><span class="toc-text">2.2 生态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Vite-的劣势"><span class="toc-text">三、Vite 的劣势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-兼容性"><span class="toc-text">3.1 兼容性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-缺少-Show-Case"><span class="toc-text">3.2 缺少 Show Case</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-代价"><span class="toc-text">3.3 代价</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、总结"><span class="toc-text">三、总结</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">Jest框架基本知识总结</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Jest框架基本知识总结</h1>
+        <div class="stuff">
+            <span>三月 10, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h3 id="1、安装命令"><a href="#1、安装命令" class="headerlink" title="1、安装命令"></a>1、安装命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jest --dev or yarn add jest --dev</span><br></pre></td></tr></table></figure>
+<h3 id="2、jest-常用命令"><a href="#2、jest-常用命令" class="headerlink" title="2、jest 常用命令"></a>2、jest 常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jest --init/watch/watchAll/coverage/ci/config</span><br></pre></td></tr></table></figure>
+<h3 id="3、jest-配置"><a href="#3、jest-配置" class="headerlink" title="3、jest 配置"></a>3、jest 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// jest.config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  browser: false, //node端使用</span><br><span class="line">  clearMocks: true, //清除Mock信息</span><br><span class="line">  coverageDirectory: &quot;reports&quot;, //覆盖率报告目录</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4、jest-全局方法"><a href="#4、jest-全局方法" class="headerlink" title="4、jest 全局方法"></a>4、jest 全局方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">afterAll(fn, timeout)</span><br><span class="line">afterEach(fn, timeout)</span><br><span class="line">beforeAll(fn, timeout)</span><br><span class="line">beforeEach(fn, timeout)</span><br><span class="line">describe(name, fn)</span><br><span class="line">describe.each(table)(name, fn, timeout)</span><br><span class="line">describe.only(name, fn)</span><br><span class="line">describe.only.each(table)(name, fn)</span><br><span class="line">describe.skip(name, fn)</span><br><span class="line">describe.skip.each(table)(name, fn)</span><br><span class="line">test(name, fn, timeout)</span><br><span class="line">test.each(table)(name, fn, timeout)</span><br><span class="line">test.only(name, fn, timeout)</span><br><span class="line">test.only.each(table)(name, fn)</span><br><span class="line">test.skip(name, fn)</span><br><span class="line">test.skip.each(table)(name, fn)</span><br><span class="line">test.todo(name)</span><br></pre></td></tr></table></figure>
+<h3 id="5、jest-匹配器"><a href="#5、jest-匹配器" class="headerlink" title="5、jest 匹配器"></a>5、jest 匹配器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">expect(value)</span><br><span class="line">expect.extend(matchers)</span><br><span class="line">expect.anything()</span><br><span class="line">expect.any(constructor)</span><br><span class="line">expect.arrayContaining(array)</span><br><span class="line">expect.assertions(number)</span><br><span class="line">expect.hasAssertions()</span><br><span class="line">expect.not.arrayContaining(array)</span><br><span class="line">expect.not.objectContaining(object)</span><br><span class="line">expect.not.stringContaining(string)</span><br><span class="line">expect.not.stringMatching(string | regexp)</span><br><span class="line">expect.objectContaining(object)</span><br><span class="line">expect.stringContaining(string)</span><br><span class="line">expect.stringMatching(string | regexp)</span><br><span class="line">expect.addSnapshotSerializer(serializer)</span><br><span class="line">.not</span><br><span class="line">.resolves</span><br><span class="line">.rejects</span><br><span class="line">.toBe(value)</span><br><span class="line">.toHaveBeenCalled()</span><br><span class="line">.toHaveBeenCalledTimes(number)</span><br><span class="line">.toHaveBeenCalledWith(arg1, arg2, ...)</span><br><span class="line">.toHaveBeenLastCalledWith(arg1, arg2, ...)</span><br><span class="line">.toHaveBeenNthCalledWith(nthCall, arg1, arg2, ....)</span><br><span class="line">.toHaveReturned()</span><br><span class="line">.toHaveReturnedTimes(number)</span><br><span class="line">.toHaveReturnedWith(value)</span><br><span class="line">.toHaveLastReturnedWith(value)</span><br><span class="line">.toHaveNthReturnedWith(nthCall, value)</span><br><span class="line">.toHaveLength(number)</span><br><span class="line">.toHaveProperty(keyPath, value?)</span><br><span class="line">.toBeCloseTo(number, numDigits?)</span><br><span class="line">.toBeDefined()</span><br><span class="line">.toBeFalsy()</span><br><span class="line">.toBeGreaterThan(number | bigint)</span><br><span class="line">.toBeGreaterThanOrEqual(number | bigint)</span><br><span class="line">.toBeLessThan(number | bigint)</span><br><span class="line">.toBeLessThanOrEqual(number | bigint)</span><br><span class="line">.toBeInstanceOf(Class)</span><br><span class="line">.toBeNull()</span><br><span class="line">.toBeTruthy()</span><br><span class="line">.toBeUndefined()</span><br><span class="line">.toBeNaN()</span><br><span class="line">.toContain(item)</span><br><span class="line">.toContainEqual(item)</span><br><span class="line">.toEqual(value)</span><br><span class="line">.toMatch(regexpOrString)</span><br><span class="line">.toMatchObject(object)</span><br><span class="line">.toMatchSnapshot(propertyMatchers?, hint?)</span><br><span class="line">.toMatchInlineSnapshot(propertyMatchers?, inlineSnapshot)</span><br><span class="line">.toStrictEqual(value)</span><br><span class="line">.toThrow(error?)</span><br><span class="line">.toThrowErrorMatchingSnapshot(hint?)</span><br><span class="line">.toThrowErrorMatchingInlineSnapshot(inlineSnapshot)</span><br></pre></td></tr></table></figure>
+<h3 id="6、测试分组"><a href="#6、测试分组" class="headerlink" title="6、测试分组"></a>6、测试分组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">describe(&apos;des1&apos;, () =&gt; &#123;</span><br><span class="line">  test(&apos;test1&apos;, () =&gt; &#123;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  test(&apos;test2&apos;, () =&gt; &#123;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  describe(&apos;des2&apos;, () =&gt; &#123;</span><br><span class="line">    test(&apos;test3&apos;, () =&gt; &#123;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="7、异步代码测试"><a href="#7、异步代码测试" class="headerlink" title="7、异步代码测试"></a>7、异步代码测试</h3><ul>
+<li><p>callback 的测试<br>在 test 第二个参数的函数中传递一个 done 方法参数，然后在回调函数中执行 done()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, (done) =&gt; &#123;</span><br><span class="line">getData(url, (data) =&gt; &#123;</span><br><span class="line">  expect(data).toEqual(&#123;</span><br><span class="line">    success: true</span><br><span class="line">  &#125;)</span><br><span class="line">  done()</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>promise 的测试</p>
+<p>1）resolves rejects</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, () =&gt; &#123;</span><br><span class="line">  return expect(myAxios(url)).resolves.toEqual(&apos;ok&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 处理错误:</span><br><span class="line">test(&apos;测试名称&apos;, () =&gt; &#123;</span><br><span class="line">  return expect(myAxios(url)).rejects.toEqual(&apos;error&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>2）return promise.then().catch()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  return myAxios(url).then((res) =&gt; &#123;</span><br><span class="line">    expect(res).toEqual(&apos;ok&apos;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 处理错误:</span><br><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  expect.assertions(1)</span><br><span class="line">  return myAxios(url).catch((res) =&gt; &#123;</span><br><span class="line">    expect(res.status).toBe(&apos;404&apos;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3）async await</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  const res = await myAxios(url)</span><br><span class="line">  expect(res).toEqual(&#123;</span><br><span class="line">    success: 1</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// or</span><br><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  const res = await myAxios(url)</span><br><span class="line">  expect(res).toEqual(&#123;</span><br><span class="line">    success: 1</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4）async await 配合 resolves rejects</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  await expect(myAxios(url)).resolves.toEqual(&#123;</span><br><span class="line">    success: 1</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  await expect(myAxios(url)).rejects.toBe(404)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>5）async await 配合 try…catch 处理错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test(&apos;测试名称&apos;, async () =&gt; &#123;</span><br><span class="line">  expect.assertions(1)</span><br><span class="line">  try &#123;</span><br><span class="line">    await myAxios(url)</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    expect(e).toBe(404)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装命令"><span class="toc-text">1、安装命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、jest-常用命令"><span class="toc-text">2、jest 常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、jest-配置"><span class="toc-text">3、jest 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、jest-全局方法"><span class="toc-text">4、jest 全局方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、jest-匹配器"><span class="toc-text">5、jest 匹配器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、测试分组"><span class="toc-text">6、测试分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、异步代码测试"><span class="toc-text">7、异步代码测试</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

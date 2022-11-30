@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">CSS 样式书写规范</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">CSS 样式书写规范</h1>
+        <div class="stuff">
+            <span>六月 23, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>可能不同团队都有各自的规范，又或者很多人在写 CSS 的时候还是想到什么就写什么，不存在太多的约束。<br>我觉得 CSS 代码规范还是有存在的必要的，尤其是在团队配合，多人协作下，规范就显得尤为重要。</p>
+<h3 id="1、编码设置"><a href="#1、编码设置" class="headerlink" title="1、编码设置"></a>1、编码设置</h3><p>采用 UTF-8 编码，在 CSS 代码头部使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@charset &quot;utf-8&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>注意，必须要定义在 CSS 文件所有字符的前面（包括编码注释），@charset 才会生效。</p>
+<h3 id="2、命名空间规范"><a href="#2、命名空间规范" class="headerlink" title="2、命名空间规范"></a>2、命名空间规范</h3><ul>
+<li>布局：以 g 为命名空间，例如：.g-wrap 、.g-header、.g-content。</li>
+<li>状态：以 s 为命名空间，表示动态的、具有交互性质的状态，例如：.s-current、s-selected。</li>
+<li>工具：以 u 为命名空间，表示不耦合业务逻辑的、可复用的的工具，例如：u-clearfix、u-ellipsis。</li>
+<li>组件：以 m 为命名空间，表示可复用、移植的组件模块，例如：m-slider、m-dropMenu。</li>
+<li>钩子：以 j 为命名空间，表示特定给 JavaScript 调用的类名，例如：j-request、j-open。</li>
+</ul>
+<h3 id="3、命名空间思想"><a href="#3、命名空间思想" class="headerlink" title="3、命名空间思想"></a>3、命名空间思想</h3><p>没有选择 BEM 这种命名过于严苛及样式名过长过丑的规则，采取了一种比较折中的方案。</p>
+<ul>
+<li>不建议使用下划线 _ 进行连接<br>节省操作，输入的时候少按一个 shift 键，能良好区分 JavaScript 变量命名。</li>
+<li>字符小写<br>定义的选择器名，属性及属性值的书写皆为小写。</li>
+</ul>
+<h3 id="4、选择器"><a href="#4、选择器" class="headerlink" title="4、选择器"></a>4、选择器</h3><p>当一个规则包含多个选择器时，每个选择器独占一行。  </p>
+<p>、+、~、&gt; 选择器的两边各保留一个空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.g-header &gt; .g-header-des,  </span><br><span class="line">.g-content ~ .g-footer &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>命名短且语义化良好<br>对于选择器的命名，尽量简洁且具有语义化，不应该出现 g-abc 这种语义模糊的命名。</p>
+<h3 id="5、规则声明块"><a href="#5、规则声明块" class="headerlink" title="5、规则声明块"></a>5、规则声明块</h3><ul>
+<li>当规则声明块中有多个样式声明时，每条样式独占一行。</li>
+<li>在规则声明块的左大括号 { 前加一个空格。</li>
+<li>在样式属性的冒号 : 后面加上一个空格，前面不加空格。</li>
+<li>在每条样式后面都以分号 ; 结尾。</li>
+<li>规则声明块的右大括号 } 独占一行。</li>
+<li>每个规则声明间用空行分隔。</li>
+<li>所有最外层引号使用单引号 ‘ 。</li>
+<li>当一个属性有多个属性值时，以逗号 , 分隔属性值，每个逗号后添加一个空格，当单个属性值过长时，每个属性值独占一行。</li>
+</ul>
+<p>完整示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.g-footer,</span><br><span class="line">.g-header &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.g-content &#123;</span><br><span class="line">    background:</span><br><span class="line">        linear-gradient(135deg, deeppink 25%, transparent 25%) -50px 0,</span><br><span class="line">        linear-gradient(225deg, deeppink 25%, transparent 25%) -50px 0,</span><br><span class="line">        linear-gradient(315deg, deeppink 25%, transparent 25%),</span><br><span class="line">        linear-gradient(45deg, deeppink 25%, transparent 25%);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.g-content::before &#123;</span><br><span class="line">    content: &apos;&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="6、数值与单位"><a href="#6、数值与单位" class="headerlink" title="6、数值与单位"></a>6、数值与单位</h3><ul>
+<li>当属性值或颜色参数为 0 – 1 之间的数时，省略小数点前的 0 。color: rgba(255, 255, 255, 0.5)color: rgba(255, 255, 255, .5);</li>
+<li>当长度值为 0 时省略单位。margin: 0px automargin: 0 auto</li>
+<li>十六进制的颜色属性值使用小写和尽量简写。color: #ffcc00color: #fc0</li>
+</ul>
+<h3 id="7、样式属性顺序"><a href="#7、样式属性顺序" class="headerlink" title="7、样式属性顺序"></a>7、样式属性顺序</h3><p>单个样式规则下的属性在书写时，应按功能进行分组，并以 Positioning Model &gt; Box Model &gt; Typographic &gt; Visual 的顺序书写，提高代码的可读性。</p>
+<ul>
+<li>如果包含 content 属性，应放在最前面；</li>
+<li>Positioning Model 布局方式、位置，相关属性包括：position / top / right / bottom / left / z-index / display / float / …</li>
+<li>Box Model 盒模型，相关属性包括：width / height / padding / margin / border / overflow / …</li>
+<li>Typographic 文本排版，相关属性包括：font / line-height / text-align / word-wrap / …</li>
+<li>Visual 视觉外观，相关属性包括：color / background / list-style / transform / animation / transition / …</li>
+</ul>
+<p>Positioning 处在第一位，因为他可以使一个元素脱离正常文本流，并且覆盖盒模型相关的样式。盒模型紧跟其后，因为他决定了一个组件的大小和位置。其他属性只在组件内部起作用或者不会对前面两种情况的结果产生影响，所以他们排在后面。</p>
+<h3 id="8、合理使用使用引号"><a href="#8、合理使用使用引号" class="headerlink" title="8、合理使用使用引号"></a>8、合理使用使用引号</h3><p>在某些样式中，会出现一些含有空格的关键字或者中文关键字。</p>
+<ul>
+<li><p>font-family 内使用引号</p>
+<p>  当字体名字中间有空格，中文名字体及 Unicode 字符编码表示的中文字体，为了保证兼容性，都建议在字体两端添加单引号或者双引号：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    font-family: &apos;Microsoft YaHei&apos;, &apos;黑体-简&apos;, &apos;\5b8b\4f53&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>background-image 的 url 内使用引号</p>
+<p>  如果路径里面有空格，旧版 IE 是无法识别的，会导致路径失效，建议不管是否存在空格，都添加上单引号或者双引号：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    background-image: url(&apos;...&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="9、避免使用-important"><a href="#9、避免使用-important" class="headerlink" title="9、避免使用 !important"></a>9、避免使用 !important</h3><p>除去某些极特殊的情况，尽量不要不要使用 !important。</p>
+<p>!important 的存在会给后期维护以及多人协作带来噩梦般的影响。</p>
+<p>当存在样式覆盖层叠时，如果你发现新定义的一个样式无法覆盖一个旧的样式，只有加上 !important 才能生效时，是因为你新定义的选择器的优先级不够旧样式选择器的优先级高。所以，合理的书写新样式选择器，是完全可以规避一些看似需要使用 !important 的情况的。</p>
+<h3 id="10、代码注释"><a href="#10、代码注释" class="headerlink" title="10、代码注释"></a>10、代码注释</h3><ul>
+<li><p>单行注释</p>
+<p>  星号与内容之间必须保留一个空格。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* 表格隔行变色 */</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多行注释</p>
+<p>  星号要一列对齐，星号与内容之间必须保留一个空格。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* Sometimes you need to include optional context for the entire component. Do that up here if it&apos;s important enough.</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>规则声明块内注释</p>
+<p>  使用 // 注释，// 后面加上一个空格，注释独立一行。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.g-footer &#123;</span><br><span class="line">    border: 0;</span><br><span class="line">    // ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件注释</p>
+<p>  文件顶部必须包含文件注释，用 @name 标识文件说明。星号要一列对齐，星号与内容之间必须保留一个空格，标识符冒号与内容之间必须保留一个空格。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @name: 文件名或模块名</span><br><span class="line"> * @description: 文件或模块描述</span><br><span class="line"> * @author: author-name</span><br><span class="line"> *          author-name2</span><br><span class="line"> * @update: 2018-06-23 14:00</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>@description为文件或模块描述。<br>@update为可选项，建议每次改动都更新一下。</p>
+<p>当该业务项目主要由固定的一个或多个人负责时，需要添加@author标识，一方面是尊重劳动成果，另一方面方便在需要时快速定位责任人。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、编码设置"><span class="toc-text">1、编码设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、命名空间规范"><span class="toc-text">2、命名空间规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、命名空间思想"><span class="toc-text">3、命名空间思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、选择器"><span class="toc-text">4、选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、规则声明块"><span class="toc-text">5、规则声明块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、数值与单位"><span class="toc-text">6、数值与单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、样式属性顺序"><span class="toc-text">7、样式属性顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、合理使用使用引号"><span class="toc-text">8、合理使用使用引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、避免使用-important"><span class="toc-text">9、避免使用 !important</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、代码注释"><span class="toc-text">10、代码注释</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

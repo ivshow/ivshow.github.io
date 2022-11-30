@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">微信 H5 页面前端开发，大多数人都会遇到的几个兼容性坑</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">微信 H5 页面前端开发，大多数人都会遇到的几个兼容性坑</h1>
+        <div class="stuff">
+            <span>七月 23, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>最近给公司写了微信h5业务页面，总结分享一下前端开发过程中的几个兼容性坑，项目直接拿的公司页面，所以下文涉及图片都模糊处理了。</p>
+<h3 id="1、ios端兼容input光标高度"><a href="#1、ios端兼容input光标高度" class="headerlink" title="1、ios端兼容input光标高度"></a>1、ios端兼容input光标高度</h3><p>问题详情描述：input输入框光标，在安卓手机上显示没有问题，但是在苹果手机上<br>当点击输入的时候，光标的高度和父盒子的高度一样。例如下图，左图是正常所期待的输入框光标，右边是ios的input光标。<br><img src="/img/20220329180145.jpg" alt="编码"></p>
+<p>出现原因分析：通常我们习惯用height属性设置行间的高度和line-height属性设置行间的距离（行高），当点击输入的时候，光标的高度就自动和父盒子的高度一样了。（谷歌浏览器的设计原则，还有一种可能就是当没有内容的时候光标的高度等于input的line-height的值，当有内容时，光标从input的顶端到文字的底部</p>
+<p>解决办法：高度height和行高line-height内容用padding撑开</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.content&#123;</span><br><span class="line">      float: left;</span><br><span class="line">      box-sizing: border-box;</span><br><span class="line">      height: <span class="number">88</span>px;</span><br><span class="line">      width: calc(<span class="number">100</span>% - <span class="number">240</span>px); </span><br><span class="line">      .content-input&#123;</span><br><span class="line">        display: block;</span><br><span class="line">        box-sizing: border-box;</span><br><span class="line">        width: <span class="number">100</span>%;</span><br><span class="line">        color: #333333;</span><br><span class="line">        font-size: <span class="number">28</span>px;</span><br><span class="line">        <span class="comment">//line-height: 88px;</span></span><br><span class="line">        padding-top: <span class="number">20</span>px;</span><br><span class="line">        padding-bottom: <span class="number">20</span>px;</span><br><span class="line">      &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、ios端微信h5页面上下滑动时卡顿、页面缺失"><a href="#2、ios端微信h5页面上下滑动时卡顿、页面缺失" class="headerlink" title="2、ios端微信h5页面上下滑动时卡顿、页面缺失"></a>2、ios端微信h5页面上下滑动时卡顿、页面缺失</h3><p>问题详情描述：在ios端，上下滑动页面时，如果页面高度超出了一屏，就会出现明显的卡顿，页面有部分内容显示不全的情况，例如下图，右图是正常页面，边是ios上下滑动后，卡顿导致如左图下面部分丢失。<br><img src="/img/20220329180305.jpg" alt="编码"></p>
+<p>出现原因分析：</p>
+<p>笼统说微信浏览器的内核，Android上面是使用自带的WebKit内核，iOS里面由于苹果的原因，使用了自带的Safari内核，Safari对于overflow-scrolling用了原生控件来实现。对于有-webkit-overflow-scrolling的网页，会创建一个UIScrollView，提供子layer给渲染模块使用。【有待考证】</p>
+<p>解决办法：只需要在公共样式加入下面这行代码</p>
+<p>*{<br>-webkit-overflow-scrolling: touch;<br>}</p>
+<p>But，这个属性是有bug的，比如如果你的页面中有设置了绝对定位的节点，那么该节点的显示会错乱，当然还有会有其他的一些bug。</p>
+<p>拓展知识：-webkit-overflow-scrolling:touch是什么？</p>
+<p>MDN上是这样定义的：</p>
+<p>-webkit-overflow-scrolling 属性控制元素在移动设备上是否使用滚动回弹效果. auto: 使用普通滚动, 当手指从触摸屏上移开，滚动会立即停止。touch: 使用具有回弹效果的滚动,<br>当手指从触摸屏上移开，内容会继续保持一段时间的滚动效果。继续滚动的速度和持续的时间和滚动手势的强烈程度成正比。同时也会创建一个新的堆栈上下文。</p>
+<h3 id="3、ios键盘唤起，键盘收起以后页面不归位"><a href="#3、ios键盘唤起，键盘收起以后页面不归位" class="headerlink" title="3、ios键盘唤起，键盘收起以后页面不归位"></a>3、ios键盘唤起，键盘收起以后页面不归位</h3><p>问题详情描述：</p>
+<p>输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑</p>
+<p>出现原因分析：</p>
+<p>固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件</p>
+<p>解决办法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"list-warp"</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"title"</span>&gt;&lt;span&gt;投·被保险人姓名&lt;/span&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">   &lt;div class="content"&gt;</span></span><br><span class="line"><span class="regexp">     &lt;input class="content-input" </span></span><br><span class="line"><span class="regexp">            placeholder="请输入姓名"</span></span><br><span class="line"><span class="regexp">            v-model="peopleList.name"</span></span><br><span class="line"><span class="regexp">           @focus="changefocus()"</span></span><br><span class="line"><span class="regexp">           @blur.prevent="changeBlur()"/</span>&gt;    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">changeBlur()&#123;</span><br><span class="line">      <span class="keyword">let</span> u = navigator.userAgent, app = navigator.appVersion;</span><br><span class="line">      <span class="keyword">let</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span><br><span class="line">      <span class="keyword">if</span>(isIOS)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> scrollHeight = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span></span><br><span class="line">          <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="built_in">Math</span>.max(scrollHeight - <span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line">          &#125;, <span class="number">200</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>拓展知识：position: fixed的元素在ios里，收起键盘的时候会被顶上去，特别是第三方键盘</p>
+<h3 id="4、安卓弹出的键盘遮盖文本框"><a href="#4、安卓弹出的键盘遮盖文本框" class="headerlink" title="4、安卓弹出的键盘遮盖文本框"></a>4、安卓弹出的键盘遮盖文本框</h3><p>问题详情描述：</p>
+<p>安卓微信H5弹出软键盘后挡住input输入框，如下左图是期待唤起键盘的时候样子，右边是实际唤起键盘的样子<br><img src="/img/20220329180434.jpg" alt="编码"></p>
+<p>出现原因分析：待补充</p>
+<p>解决办法：给input和textarea标签添加focus事件，如下，先判断是不是安卓手机下的操作，当然，可以不用判断机型，Document 对象属性和方法，setTimeout延时0.5秒，因为调用安卓键盘有一点迟钝，导致如果不延时处理的话，滚动就失效了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hangefocus()&#123;</span><br><span class="line">  <span class="keyword">let</span> u = navigator.userAgent, app = navigator.appVersion;</span><br><span class="line">  <span class="keyword">let</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>(isAndroid)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">document</span>.activeElement.scrollIntoViewIfNeeded();</span><br><span class="line">     <span class="built_in">document</span>.activeElement.scrollIntoView();</span><br><span class="line">    &#125;, <span class="number">500</span>);       </span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>拓展知识：</p>
+<p>Element.scrollIntoView()方法让当前的元素滚动到浏览器窗口的可视区域内。而Element.scrollIntoViewIfNeeded()方法也是用来将不在浏览器窗口的可见区域内的元素滚动到浏览器窗口的可见区域。但如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动</p>
+<h3 id="5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><a href="#5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常" class="headerlink" title="5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"></a>5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</h3><p>问题详情描述：</p>
+<p>ios当前页面分享给好友，点击进来是正常，如果二次分享，则跳转到首页；使用vue router跳转到第二个页面后在分享时，分享设置失败；以上安卓分享都是正常<br><img src="/img/20220329180541.png" alt="编码"></p>
+<p>出现原因分析：jssdk是后端进行签署，前端校验，但是有时跨域，ios是分享以后会自动带上 from=singlemessage&amp;isappinstalled=0 以及其他参数，分享朋友圈参数还不一样，貌似系统不一样参数也不一样，但是每次获取url并不能获取后面这些参数</p>
+<p>解决办法：</p>
+<p>(1)可以使用改页面this.$router.push跳转，为window.location.href去跳转，而不使用路由跳转，这样可以使地址栏的地址与当前页的地址一样，可以分享成功（适合分享的页面不多的情况下，作为一个单单页运用，这样刷新页面跳转，还是..）</p>
+<p>（2）把入口地址保存在本地，等需要获取签名的时候 取出来，注意：sessionStorage.setItem(‘href’,href); 只在刚进入单应用的时候保存！【该方法未验证】</p>
+<p>题外话：如果能用小程序写的页面，尽量上小程序吧，H5开发在微信开发者工具里看页面效果可能看不出问题，因为不能唤起软键盘。避免频繁线上发布，可以用花生壳或者idcfengye，做内网穿透，搭建一个可以通过域名访问的开发环境的h5页面，在手机上看看效果，对了微信内置浏览器缓存机制。会导致刚提交的代码（特别是js）效果要半个小时左右才生效。</p>
+<h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><p>微信H5页面其实很多知识，登陆授权，jssdk授权，这里就只做了分享，当然还有上传图片、微信支付等功能，都可能会遇到坑，以上几个坑也是比较常遇到的，如果有更好的解决方案的话，欢迎在留言区分享。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、ios端兼容input光标高度"><span class="toc-text">1、ios端兼容input光标高度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、ios端微信h5页面上下滑动时卡顿、页面缺失"><span class="toc-text">2、ios端微信h5页面上下滑动时卡顿、页面缺失</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、ios键盘唤起，键盘收起以后页面不归位"><span class="toc-text">3、ios键盘唤起，键盘收起以后页面不归位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、安卓弹出的键盘遮盖文本框"><span class="toc-text">4、安卓弹出的键盘遮盖文本框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><span class="toc-text">5、Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后："><span class="toc-text">最后：</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

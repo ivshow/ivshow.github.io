@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">前端如何高效的与后端协作开发</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">前端如何高效的与后端协作开发</h1>
+        <div class="stuff">
+            <span>六月 01, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前后分离/">前后分离</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/前端工程化/">前端工程化</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/单页面应用/">单页面应用</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="1、前后端分离"><a href="#1、前后端分离" class="headerlink" title="1、前后端分离"></a>1、前后端分离</h3><p>前端与后端的分离，能使前端的开发脱离后端的开发模式，拥有更大的自由度，以此便可做前端工程化、组件化、单页面应用等。  </p>
+<p>可以参考：<a href="https://segmentfault.com/a/1190000015297319" target="_blank" rel="noopener">前后端分离、web与static服务器分离</a></p>
+<h3 id="2、尽量避免后端模板渲染"><a href="#2、尽量避免后端模板渲染" class="headerlink" title="2、尽量避免后端模板渲染"></a>2、尽量避免后端模板渲染</h3><p>web 应用的渲染方式分为服务器端渲染和客户端渲染，当下比较推荐的方式是客户端渲染，数据使用全 ajax 的方式进行交互。</p>
+<p>除非在一些不得不使用服务器端渲染的情况下（如门户、电商等），应当尽量使用客户端渲染，因为客户端渲染更能使前后端分离（项目分离、代码解耦、协作分离、职责分离等），也能更好的做本地接口模拟开发，提升开发效率。</p>
+<p>即使用服务器端渲染，在技术支持的条件下，可以使用 node 中间层（由前端人员开发），代替传统的后端模板渲染，这样可以使后端与前端完全解耦，后端与前端只有数据上的往来。</p>
+<p>可以参考：<a href="https://segmentfault.com/a/1190000016704384" target="_blank" rel="noopener">细说后端模板渲染、客户端渲染、node 中间层、服务器端渲染</a></p>
+<h3 id="3、-尽量避免大量的线上调试"><a href="#3、-尽量避免大量的线上调试" class="headerlink" title="3、 尽量避免大量的线上调试"></a>3、 尽量避免大量的线上调试</h3><p>做好本地接口模拟开发（包括后端模板渲染），避免大量的线上调试，因为线上调试很不方便，也很费事，并且每次更新代码，都需要重新构建，然后同步到服务器。</p>
+<p>所以做好本地接口模拟开发，只要程序在本地运行是没问题的，一般线上就不会有太大的问题，这样就能大幅降低调试工作量，提升开发效率。</p>
+<h3 id="4、本地接口模拟开发"><a href="#4、本地接口模拟开发" class="headerlink" title="4、本地接口模拟开发"></a>4、本地接口模拟开发</h3><p>本地接口模拟就是在本地模拟一个与服务器差不多的环境，能够提供数据所需的接口，进行错误模拟处理等等。</p>
+<p>本地接口模拟开发的意义就在于能够在本地完成几乎所有的开发与调试，尽量减少线上的调试，提高开发效率。</p>
+<p>一些常用库：</p>
+<ul>
+<li><a href="https://github.com/BrowserSync/browser-sync" target="_blank" rel="noopener">browser-sync</a>：能让浏览器实时、快速响应文件更改（ html、 js、css、 sass、 less 等）并自动刷新页面，并且可以同时在PC、平板、手机等设备下进行调试。</li>
+<li><a href="https://github.com/webpack/webpack-dev-middlewar" target="_blank" rel="noopener">webpack-dev-middleware</a>：A development middleware for webpack。</li>
+<li><a href="https://github.com/webpack-contrib/webpack-hot-middleware" target="_blank" rel="noopener">webpack-hot-middleware</a>：热更新本地开发浏览器服务。<br>另外，本地接口模拟开发需要后端开发人员有规范的接口文档。</li>
+</ul>
+<p>可以参考：<a href="https://segmentfault.com/a/1190000015297352" target="_blank" rel="noopener">本地化接口模拟、前后端并行开发</a></p>
+<h3 id="5、规范的接口文档"><a href="#5、规范的接口文档" class="headerlink" title="5、规范的接口文档"></a>5、规范的接口文档</h3><p>前端与后端协作提升开发效率的一个很重要的方法就是减少沟通：能够形成纸质的文档就不要口头沟通、能够把接口文档写清楚也不要口头沟通（参数、数据结构、字段含义等），特别是线上协作的时候，面对面交流是很困难的。</p>
+<p>一个良好的接口文档应当有以下的几点要求与信息：</p>
+<ul>
+<li>格式简洁清晰：推荐用 <a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint</a></li>
+<li>分组：当接口很多的时候，分组就很必要了</li>
+<li>接口名、接口描述、接口地址</li>
+<li>http 方法、参数、headers、是否序列化</li>
+<li>http 状态码、响应数据</li>
+</ul>
+<p>接口文档可以用一些文档服务（如 <a href="https://github.com/leanote/leanote" target="_blank" rel="noopener">leanote</a>）来管理文档，也可以用 git 来管理；<br>书写方式可以用 markdown，也可以 YAML、 JSON 等。</p>
+<p>推荐使用 markdown 方式写文档，用 git 管理文档。</p>
+<p>可以参考：<a href="https://segmentfault.com/a/1190000015297352" target="_blank" rel="noopener">本地化接口模拟、前后端并行开发</a></p>
+<h3 id="6、运行时捕捉-js-脚本错误"><a href="#6、运行时捕捉-js-脚本错误" class="headerlink" title="6、运行时捕捉 js 脚本错误"></a>6、运行时捕捉 js 脚本错误</h3><p>当用户在用线上的程序时，怎么知道有没有出 bug；如果出 bug 了，报的是什么错；如果是 js 报错，怎么知道是那一行运行出了错？</p>
+<p>所以，在程序运行时捕捉 js 脚本错误，并上报到服务器，是非常有必要的。</p>
+<p>这里就要用到 window.onerror 了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">window.onerror = (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) =&gt; &#123;</span><br><span class="line">    const data = &#123;</span><br><span class="line">        title: document.getElementsByTagName(</span><br><span class="line">            &apos;title&apos;</span><br><span class="line">        )[</span><br><span class="line">            0</span><br><span class="line">        ].innerText,</span><br><span class="line">        errorMessage,</span><br><span class="line">        scriptURI,</span><br><span class="line">        lineNumber,</span><br><span class="line">        columnNumber,</span><br><span class="line">        detailMessage: (errorObj &amp;&amp; errorObj.message) ||</span><br><span class="line">            &apos;&apos;,</span><br><span class="line">        stack: (errorObj &amp;&amp; errorObj.stack) ||</span><br><span class="line">            &apos;&apos;,</span><br><span class="line">        userAgent: window.navigator.userAgent,</span><br><span class="line">        locationHref: window.location.href,</span><br><span class="line">        cookie: window.document.cookie,</span><br><span class="line">    &#125;;</span><br><span class="line">    post(&apos;url&apos;, data); // 上报到服务器</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>线上的 js 脚本都是压缩过的，需要用 sourcemap 文件与 <a href="https://github.com/mozilla/source-map" target="_blank" rel="noopener">source-map</a> 查看原始的报错堆栈信息。</p>
+<p>可以参考：<a href="https://webpack.js.org/configuration/devtool/" target="_blank" rel="noopener">webpack - devtool</a></p>
+<h3 id="7、移动端调试"><a href="#7、移动端调试" class="headerlink" title="7、移动端调试"></a>7、移动端调试</h3><p>因为移动端的开发无法像 pc 端开发一样使用 Chrome 的开发者调试工具，所以调试移动端需要一些额外的技巧。</p>
+<p>移动端应用一般都运行在微信浏览器中、 webview 中、手机浏览器中。</p>
+<ul>
+<li>远程调试（Remote Debugging）</li>
+</ul>
+<blockquote>
+<p>远程调试就是通过 USB 连接、端口转发、搭建代理等方式，将一个设备的 web 页面映射到另一个设备上，比如将手机的 webview 映射到 pc 上，达到调试的目的。<br>移动端 web 应用调试难题从一开始就有，不过后来浏览器厂商基本都推出自己的远程调试工具来解决这个问题，包括 OperaMobile、 iOSSafari、 ChromeforAndroid、UC 浏览器等，另外还有一些第三方开发的远程调试工具，比如 <a href="http://people.apache.org/~pmuellr/weinre/docs/1.x/1.5.0/" target="_blank" rel="noopener">weinre</a> 等。</p>
+</blockquote>
+<blockquote>
+<p>以 Android 为例，可以将 webview、 ChromeforAndroid 中的页面映射到 pc 端的 ChromeDevTools，然后就可以在 pc 端调试移动端的页面了。</p>
+</blockquote>
+<blockquote>
+<p>可以参考：<a href="https://blog.csdn.net/freshlover/article/details/42528643/" target="_blank" rel="noopener">移动端Web开发调试之Chrome远程调试(Remote Debugging)</a></p>
+</blockquote>
+<ul>
+<li>vConsole</li>
+</ul>
+<blockquote>
+<p>一个轻量、可拓展、针对手机网页的前端开发者调试面板（ chrome 开发者工具的便利实现）。<br>这个是内嵌的页面当中的便捷调试器，基本上能够满足一般的需要远程调试的页面。 </p>
+</blockquote>
+<blockquote>
+<p>github：<a href="https://github.com/Tencent/vConsole" target="_blank" rel="noopener">https://github.com/Tencent/vConsole</a><br>demo：<a href="https://wechatfe.github.io/vconsole/demo.html" target="_blank" rel="noopener">https://wechatfe.github.io/vconsole/demo.html</a></p>
+</blockquote>
+<p><img src="http://f.dooomi.com/image/20181204124208.jpg" alt="Markdown"></p>
+<ul>
+<li>TBS Studio</li>
+</ul>
+<blockquote>
+<p>因为微信浏览器是定制的浏览器，一般的远程调试方式都不可用，需要配合特定的工具，如微信开发者工具。<br><a href="https://x5.tencent.com/tbs/guide.html" target="_blank" rel="noopener">TBS Studio</a> 是另一个可以像 Chrome 一样调试远程微信浏览器页面的强大工具。</p>
+</blockquote>
+<blockquote>
+<p>可以参考：<a href="https://x5.tencent.com/tbs/guide/debug/season1.html" target="_blank" rel="noopener">tbs studio - 腾讯浏览服务-调试工具</a></p>
+</blockquote>
+<h3 id="8、前端后并行开发"><a href="#8、前端后并行开发" class="headerlink" title="8、前端后并行开发"></a>8、前端后并行开发</h3><p>正常情况下，前端的开发在完成 UI 或者组件开发之后，就需要等后端给出接口文档才能继续进行，如果能做到前后端并行开发，也能提升开发效率。</p>
+<p>前后端并行开发，就是说前端的开发不需要等后端给出接口文档就可以进行开发，等后端给出接口之后，再对接好后就基本上可以上线了。</p>
+<p>在本地化接口模拟的实现下，就可以做到前后端并行开发，只是在代码层面需要对 ajax 进行封装。</p>
+<p>可以参考：<a href="https://segmentfault.com/a/1190000015297352" target="_blank" rel="noopener">本地化接口模拟、前后端并行开发</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、前后端分离"><span class="toc-text">1、前后端分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、尽量避免后端模板渲染"><span class="toc-text">2、尽量避免后端模板渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、-尽量避免大量的线上调试"><span class="toc-text">3、 尽量避免大量的线上调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、本地接口模拟开发"><span class="toc-text">4、本地接口模拟开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、规范的接口文档"><span class="toc-text">5、规范的接口文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、运行时捕捉-js-脚本错误"><span class="toc-text">6、运行时捕捉 js 脚本错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、移动端调试"><span class="toc-text">7、移动端调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、前端后并行开发"><span class="toc-text">8、前端后并行开发</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

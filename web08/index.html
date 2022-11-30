@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">智慧服务终端</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">智慧服务终端</h1>
+        <div class="stuff">
+            <span>十月 07, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>该系统包括5大模块：</p>
+<ul>
+<li>机场设施（洗手间、母婴室、饮水机、问询柜台等）精准的室内导航路线、路径距离和行走时间。</li>
+<li>机场服务（VIP休息室、机场酒店、航空公司电话、医疗急救、旅客中转服务等）的内容介绍。</li>
+<li>航班查询，通过人脸识别技术、读取身份证、读取登机牌等渠道，获取一个或多个旅客的航班信息，并展示到对应登机口的导航地图，及其导航路线、行走时间。</li>
+<li>问询客服和投诉建议，该功能为旅客提供视频服务，可以与机场客服人员面对面沟通交流。</li>
+<li>机场大图，包含机场内的基础设施、商家店铺、当前位置等内容信息。</li>
+</ul>
+<h3 id="项目上线机场"><a href="#项目上线机场" class="headerlink" title="项目上线机场"></a>项目上线机场</h3><blockquote>
+<p>1、西安咸阳国际机场<br>2、银川河东国际机场<br>3、西宁曹家堡国际机场<br>4、北京举行的首届民航科教创新成果展<br>5、西安咸阳国际机场举行的民航航班正常暨服务质量工作会</p>
+</blockquote>
+<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><blockquote>
+<p>1、采用前后端分离的开发模式，通过Nginx反向代理，调用API接口，获取旅客的航班数据。<br>2、通过制作的可视化界面操作，将设计的伪3D地图通过算法建立成二维坐标模型。<br>3、采用人脸识别技术，判断旅客身份信息，并获取旅客当前位置。<br>4、采用A*(A-Star)算法，在二维坐标模型中获取最佳路径。<br>5、采用贝塞尔曲线，将获取到的路径坐标转化为一条光滑的曲线。<br>6、采用三角函数及反三角函数计算出路径的偏向角度。<br>7、采用递归算法将坐标点位，通过canvas绘画至前端页面，形成动态导航路线，并精准的计算路径距离和行走时间。<br>8、使用animate.css实现页面元素动画效果。<br>9、整体采用jQuery + Ajax + Canvas + CSS3 + Nginx技术方案实现。</p>
+</blockquote>
+<h3 id="项目展示"><a href="#项目展示" class="headerlink" title="项目展示"></a>项目展示</h3><blockquote>
+<p>1、2018年6月13日北京展览馆举行的首届民航科教创新成果展：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/l3pbsifwv-pzwMEdNf07Nw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/l3pbsifwv-pzwMEdNf07Nw</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>2、助力西安咸阳国际机场实现“刷脸”便捷通关登机：</p>
+<ul>
+<li><a href="http://news.hsw.cn/system/2018/0212/959164_4.shtml?mobile=PeshiDhD" target="_blank" rel="noopener">http://news.hsw.cn/system/2018/0212/959164_4.shtml?mobile=PeshiDhD</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>3、助力银川河东国际机场被认定为国际航空运输协会（IATA）“白金机场”：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/ZRW7Zy9sin4N6Vz7Rab4AA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ZRW7Zy9sin4N6Vz7Rab4AA</a></li>
+</ul>
+</blockquote>
+<h3 id="展示图"><a href="#展示图" class="headerlink" title="展示图"></a>展示图</h3><p><img src="http://f.dooomi.com/image/iqt.gif" alt="Markdown"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目上线机场"><span class="toc-text">项目上线机场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术实现"><span class="toc-text">技术实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目展示"><span class="toc-text">项目展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#展示图"><span class="toc-text">展示图</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>

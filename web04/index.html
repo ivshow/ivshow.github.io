@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vshow | Domi</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Vshow,"> 
+    <meta name="description" content="vshow博客,"> 
+    <meta name="author" content="vshow"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="/css/diaspora.css">
+<link rel="stylesheet" href="/css/rest.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+  <div class="bar" style="width: 0;"></div>
+  <a class="icon-home image-icon" href="javascript:;"></a>
+  <div title="播放/暂停" class="icon-play"></div>
+  <h3 class="subtitle">移动端web开发总结</h3>
+  <div class="social">
+    <!--<div class="like-icon">-->
+    <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+    <!--</div>-->
+    <div>
+      <div class="share" hidden>
+        <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+      </div>
+      <div id="qr">
+        <img src="/img/wechat.png" alt="" srcset="" />
+        <p>微信扫一扫</p>
+        <p>关注该公众号</p>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">移动端web开发总结</h1>
+        <div class="stuff">
+            <span>八月 06, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/web/">web</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/移动端/">移动端</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>目前为止，互联网行业里，手机越来越智能化，移动端占有的比例越来越高，尤其实在电商，新闻，广告，游戏领域。用户要求越来越高，网站功能越来越好，效果越来越炫酷，这就要求我们产品质量越来越高，web前端开发而言是一个挑战，是一个难题，也是一个机遇。</p>
+<h3 id="1、Meta标签"><a href="#1、Meta标签" class="headerlink" title="1、Meta标签"></a>1、Meta标签</h3><ul>
+<li><p>页面在手机上显示时，增加这个meta可以让页面强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户通过点击或者缩放等操作对屏幕放大浏览。（这个在ios10以上的版本已经失效了，即使加了下面的meta，用户双击，缩放还是可以缩放页面。大家可以按照开发需求，参考下面的连接进行限制–ios10中禁止用户缩放页面）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;&quot; name=&quot;viewport&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁止ios上自动识别电话</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁止android上自动识别邮箱</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面两个是针对ios上的safari上地址栏和顶端样式条的</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 听说在ios7以上版本就没效果了 --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 可选default、black、black-translucent 但是我都是用black--&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2、打电话发短信"><a href="#2、打电话发短信" class="headerlink" title="2、打电话发短信"></a>2、打电话发短信</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;tel:10086&quot;&gt;打电话给:10086&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;10086&quot;&gt;发短信给: 10086&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3、css3过渡动画开启硬件加速"><a href="#3、css3过渡动画开启硬件加速" class="headerlink" title="3、css3过渡动画开启硬件加速"></a>3、css3过渡动画开启硬件加速</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.translate3d &#123;</span><br><span class="line">   -webkit-transform: translate3d(0, 0, 0);</span><br><span class="line">   -moz-transform: translate3d(0, 0, 0);</span><br><span class="line">   -ms-transform: translate3d(0, 0, 0);</span><br><span class="line">   transform: translate3d(0, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建议：  </p>
+<ul>
+<li>在手机上（其实PC也是一样）。CSS3动画或者过渡尽量使用transform和opacity来实现动画，不要使用left和top。  </li>
+<li>动画和过渡能用css3解决的，就不要使用js。如果是复杂的动画可以使用css3+js（或者html5+css3+js）配合开发。</li>
+</ul>
+<h3 id="4、移动端click屏幕产生200-300-ms的延迟响应"><a href="#4、移动端click屏幕产生200-300-ms的延迟响应" class="headerlink" title="4、移动端click屏幕产生200-300 ms的延迟响应"></a>4、移动端click屏幕产生200-300 ms的延迟响应</h3><p>click事件因为要等待确认是否是双击事件，会有300ms的延迟（两次点击事件间隔小于300ms就认为是双击），体验并不好。现在的解决方案，第一个就是采用touchstart或者touchend代替click。或者封装tap事件来代替click 事件，所谓的tap事件由touchstart事件+ touchmove（判断是否是滑动事件）+touchend事件封装组成。</p>
+<h3 id="5、图片优化"><a href="#5、图片优化" class="headerlink" title="5、图片优化"></a>5、图片优化</h3><ul>
+<li><p>base64编码图片替换url图片<br>对于一些小图标（我这做法是把8K以下的图标都转换成base64）之类的，可以将图片用base64，来减少请求的发送。尤其是在移动端，请求显得特别珍贵，在网速的不好的情况下，请求就是珍贵中的珍贵。</p>
+</li>
+<li><p>图片压缩<br>对于整个网站来说，图片是最占流量的资源之一，能不使用就不适用，图标可是使用base64编码，字体图标代替，SVG等来代替，使用就要选择最合适的格式，合适的尺寸，然后压缩–这里推荐腾讯推出的智图。</p>
+<p>  PS：过度压缩图片大小影响图片显示效果，可能会使得图片变得模糊，一般来说，品质在60左右就差不多了！</p>
+</li>
+<li><p>图片懒加载<br>首屏加载的快慢，直接影响用户的体验，建议将非首屏的图片资源放到用户需要时才加载。这样可以大大优化首屏加载，减少首屏加载所需要的时间！</p>
+<p>  ps：懒加载要使用js频繁操作dom，期间会导致大量重绘渲染，影响性能。</p>
+</li>
+<li><p>img还是background<br>图片的展示方式有两种，一种是以图片标签显示，一种是以背景图片显示！下面写了这两者的区别。</p>
+<p>  img:html中的标签img是网页结构的一部分会在加载结构的过程中和其他标签一起加载。<br>  background：以css背景图存在的图片background会等到结构加载完成（网页的内容全部显示以后）才开始加载，也就是说，网页会先加载标签img的内容，再加载背景图片background引用的图片。引入一张图片，那么在这个图片加载完成之前，img后的内容不会显示。而用background来引入同样的图片，网页结构和内容加载完成之后，才开始加载背景图片，网页内容能正常浏览，但是看不到背景图片。至于这两种，大家按照习惯，需求等权重因素选择！</p>
+</li>
+</ul>
+<h3 id="6、快速回弹滚动"><a href="#6、快速回弹滚动" class="headerlink" title="6、快速回弹滚动"></a>6、快速回弹滚动</h3><p>在ios上，如果存在局部滚动，就要加这个属性了！如果不加，滚动会很慢，看起来也会有一卡一卡的感觉。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling: touch;</span><br></pre></td></tr></table></figure></p>
+<h3 id="7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩"><a href="#7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩" class="headerlink" title="7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩"></a>7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a, button, input, textarea &#123; </span><br><span class="line">    -webkit-tap-highlight-color: rgba(0,0,0,0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8、ios中去掉默认input默认样式"><a href="#8、ios中去掉默认input默认样式" class="headerlink" title="8、ios中去掉默认input默认样式"></a>8、ios中去掉默认input默认样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input, button, textarea &#123;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://f.dooomi.com/media/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%83.mp3'></li>
+                    
+                        <li title='1' data-url='http://f.dooomi.com/media/%E5%A5%BD%E5%96%9C%E6%AC%A2%E4%BD%A0.mp3'></li>
+                    
+                        <li title='2' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E4%B8%80%E7%AC%91%E5%80%BE%E5%9F%8E.mp3'></li>
+                    
+                        <li title='3' data-url='http://f.dooomi.com/media/%E6%B1%AA%E8%8B%8F%E6%B3%B7%20-%20%E6%9C%89%E7%82%B9%E7%94%9C.mp3'></li>
+                    
+                        <li title='4' data-url='http://f.dooomi.com/media/%E8%AE%B8%E5%B5%A9%20-%20%E7%BB%9D%E4%BB%A3%E9%A3%8E%E5%8D%8E.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Meta标签"><span class="toc-text">1、Meta标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、打电话发短信"><span class="toc-text">2、打电话发短信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、css3过渡动画开启硬件加速"><span class="toc-text">3、css3过渡动画开启硬件加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、移动端click屏幕产生200-300-ms的延迟响应"><span class="toc-text">4、移动端click屏幕产生200-300 ms的延迟响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、图片优化"><span class="toc-text">5、图片优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、快速回弹滚动"><span class="toc-text">6、快速回弹滚动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩"><span class="toc-text">7、ios系统中去掉元素被触摸时产生的半透明灰色遮罩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、ios中去掉默认input默认样式"><span class="toc-text">8、ios中去掉默认input默认样式</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://f.dooomi.com/js/plugin.min.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fd4a84e32c3f25a40cc5947c1e50561d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+</html>
